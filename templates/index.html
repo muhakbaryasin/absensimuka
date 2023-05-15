@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="name" content="Webcam capture WebRTC">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <base target="_blank">
+    <title>Absensi Wajah</title>
+<style>
+video {
+    width: 250px;
+    height: auto;
+    border: 1px solid;
+    transform: scaleX(-1);
+}
+
+canvas
+{
+    transform: scaleX(-1);
+    filter: FlipH;
+    width: 250px;
+    height: auto;
+    border: 1px solid;
+}
+
+.container {
+    align: center;
+    margin: auto;
+    width: 508px;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+input {
+    margin: 5px 0px;
+    display:block;
+    width: 100%;
+}
+
+button {
+    display:block;
+    width: 100%;
+    height: 30px;
+}
+
+nav{
+    width: fit-content;
+    border: 1px solid #666;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+}
+nav input{ display: none; }
+nav label{
+    font-family: sans-serif;
+    padding: 10px 16px;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+nav label:last-of-type{ border-right: 0; }
+nav label:hover{
+    background: #eee;
+}
+nav input:checked + label{
+    background: #becbff;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <input type="radio" id="x1" name="feature_select" onclick="toogleFeature(this);" checked/>
+        <label for="x1">Absensi</label>
+        <input type="radio" id="x2" name="feature_select" onclick="toogleFeature(this);"/>
+        <label for="x2">Registrasi</label>
+    </nav>
+    <input type="text" id="id_" placeholder="ID" disabled>
+    <input type="text" id="name_" placeholder="nama" disabled>
+    <div>
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" alt="Canvas image"></canvas>
+    </div>
+    <button id="showVideo">Open camera</button>
+    <button id="btnCapture" style="display: none;">Daftarkan</button>
+</div>
+<script src="{{url_for('static', filename='main.js')}}"></script>
+</body>
+</html>
